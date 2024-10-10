@@ -2,6 +2,7 @@ package culturemedia.repository;
 
 import culturemedia.model.View;
 
-public class ViewsRepository {
+public interface ViewsRepository {
     View add(View view);
 }
+
