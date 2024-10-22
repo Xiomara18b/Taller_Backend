@@ -1,8 +1,8 @@
-package culturemedia.repository.impl;
+package culturemedia.service.impl;
 
 import culturemedia.model.Video;
 import culturemedia.model.View;
-import culturemedia.repository.CultureMediaService;
+import culturemedia.service.CultureMediaService;
 import culturemedia.exception.CultureMediaException;
 import culturemedia.exception.DurationNotValidException;
 import culturemedia.exception.VideoNotFoundException;
