@@ -1,4 +1,4 @@
-package culturemedia.repository;
+package culturemedia.service;
 
 import java.util.List;
 import culturemedia.model.Video;
