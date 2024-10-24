@@ -3,11 +3,11 @@ package culturemedia.service;
 import java.util.List;
 import culturemedia.model.Video;
 import culturemedia.model.View;
-import culturemedia.exception.CultureMediaException;
+import culturemedia.exception.VideoNotFoundException;
 
 public interface CultureMediaService {
-    List<Video> listAll();
-    Video add(Video video) throws CultureMediaException;
-    View add(View view) throws CultureMediaException;
+    List<Video> findAll() throws VideoNotFoundException;
+    Video save(Video video);
+    View save(View view);
 
 }
