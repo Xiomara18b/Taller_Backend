@@ -48,4 +48,44 @@ public class CultureMediaServiceTest {
         VideoNotFoundException exception = assertThrows(VideoNotFoundException.class, () -> cultureMediaService.findAll());
         assertEquals("¡No video found!", exception.getMessage());
     }
+
+    @Test
+    void when_Video_is_saved_it_should_be_added_to_the_list_successfully() throws VideoNotFoundException {
+        Video video = new Video("07", "Nuevo Video", "----", 6.2);
+        cultureMediaService.save(video);
+
+        List<Video> videos = cultureMediaService.findAll();
+        assertEquals(1, videos.size());
+        assertEquals("Nuevo Video", videos.get(0).title());
+    }
+
+    @Test
+    void when_FindByTitle_only_videos_which_contains_the_word_in_the_title_should_be_returned_successfully() throws VideoNotFoundException {
+        saveVideos();
+        List<Video> result = cultureMediaService.find("Título");
+        assertEquals(4, result.size());
+    }
+
+    @Test
+    void when_FindByTitle_only_videos_which_contains_the_word_in_the_title_should_be_returned_an_VideoNotFoundException(){
+        saveVideos();
+        VideoNotFoundException exception = assertThrows(VideoNotFoundException.class, () ->
+                cultureMediaService.find("inexistente"));
+        assertEquals("¡No video found!", exception.getMessage());
+    }
+
+    @Test
+    void when_FindByDuration_only_videos_between_the_range_should_be_returned_successfully() throws VideoNotFoundException {
+        saveVideos();
+        List<Video> result = cultureMediaService.find(4.0, 5.0);
+        assertEquals(2, result.size());
+    }
+
+    @Test
+    void when_FindByDuration_only_videos_between_the_range_should_be_returned_an_VideoNotFoundException() {
+        saveVideos();
+        VideoNotFoundException exception = assertThrows(VideoNotFoundException.class, () ->
+                cultureMediaService.find(6.5, 7.0));
+        assertEquals("¡No video found!", exception.getMessage());
+    }
 }
