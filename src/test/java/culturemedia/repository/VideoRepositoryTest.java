@@ -10,6 +10,7 @@ import culturemedia.model.Video;
 import culturemedia.repository.impl.VideoRepositoryImpl;
 import culturemedia.repository.VideoRepository;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import culturemedia.exception.VideoNotFoundException;
 
 class VideoRepositoryTest {
 
